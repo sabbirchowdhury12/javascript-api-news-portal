@@ -4,7 +4,25 @@ const loadCategories = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`
     const res = await fetch(url);
     const data = await res.json();
-    displayNews(data);
+    displayCategories(data.data.news_category);
+}
+
+const displayCategories = (catagories) => {
+    // console.log(catagories)
+
+    catagories.forEach(category => {
+        console.log(category)
+
+
+        const categoryList = document.getElementById('unorder-list');
+        const li = document.createElement('li');
+
+        li.innerHTML = `
+        <a onclick="getCategoryId('${category.category_id}')" class="nav-link active" aria-current="page" href="#">${category.category_name}</a>
+        `
+        categoryList.appendChild(li)
+
+    })
 }
 
 const loadNews = async () => {
@@ -19,7 +37,7 @@ const loadNews = async () => {
 const displayNews = (newses) => {
 
     newses.forEach(news => {
-        console.log(news)
+        // console.log(news)
         const newsContainer = document.getElementById('news-container');
 
         const newsDiv = document.createElement('div');
@@ -52,5 +70,13 @@ const displayNews = (newses) => {
 }
 
 
+const getCategoryId = () => {
+    const categoryList = document.getElementById('unorder-list');
+    categoryList.addEventListener('click', function (e) {
+        console.log(e)
+    })
+}
+
+loadCategories();
 
 loadNews();
