@@ -13,7 +13,6 @@ const displayCategories = (catagories) => {
     catagories.forEach(category => {
         console.log(category)
 
-
         const categoryList = document.getElementById('unorder-list');
         const li = document.createElement('li');
 
@@ -25,9 +24,10 @@ const displayCategories = (catagories) => {
     })
 }
 
-const loadNews = async () => {
+const loadNews = async (category_id) => {
 
-    const url = `https://openapi.programming-hero.com/api/news/category/01`
+    // const url = `https://openapi.programming-hero.com/api/news/category/01`
+    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
     const res = await fetch(url);
     const data = await res.json();
     displayNews(data.data);
@@ -35,10 +35,10 @@ const loadNews = async () => {
 }
 
 const displayNews = (newses) => {
-
+    const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = '';
     newses.forEach(news => {
         // console.log(news)
-        const newsContainer = document.getElementById('news-container');
 
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
@@ -62,21 +62,17 @@ const displayNews = (newses) => {
             </div>
         </div>
         `
-
         newsContainer.appendChild(newsDiv)
-
 
     });
 }
 
 
-const getCategoryId = () => {
-    const categoryList = document.getElementById('unorder-list');
-    categoryList.addEventListener('click', function (e) {
-        console.log(e)
-    })
+const getCategoryId = (id) => {
+    loadNews(id);
+    console.log(id)
 }
 
 loadCategories();
 
-loadNews();
+// loadNews(' ');
