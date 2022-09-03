@@ -34,8 +34,111 @@
         </div>
     </nav>
 
+    <main>
+        <div class="container">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            #1. Difference between var, let and const keywords.
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
 
+                            <p><strong>var keyword in JavaScript:</strong> The var is the oldest keyword to declare a
+                                variable in JavaScript.
+                                The scope of the var keyword is the global or function scope. It means variables defined
+                                outside the function can be accessed globally, and variables defined inside a particular
+                                function can be accessed within the function.</p>
+                            <p><strong>let keyword in JavaScript:</strong> The let keyword is an improved version of the
+                                var
+                                keyword.
+                                The scope of a let variable is only block scoped. It can’t be accessible outside the
+                                particular block ({block}).
+                            </p>
+                            <strong>const keyword in JavaScript:</strong> The const keyword has all the properties that
+                            are the
+                            same as the let keyword, except the user cannot update it.When users declare a const
+                            variable, they need to initialize it, otherwise, it returns an error. The user cannot
+                            update the const variable once it is declared.
+                        </div>
+                    </div>
+                </div>
 
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            #2. Difference Between Regular Functions and Arrow Functions.
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>Inside of a regular JavaScript function, 'this' value is
+                                dynamic.The behavior of this inside of an arrow function differs considerably from the
+                                regular function's this behavior. The arrow function doesn't define its own execution
+                                context.</p>
+                            <p>The regular function can easily construct objects.A
+                                consequence of this resolved lexically is that an arrow function cannot be used as a
+                                constructor.</p>
+                            <p>
+                                Inside the body of a regular function, arguments is a special array-like object
+                                containing the list of arguments with which the function has been invoked.On the other
+                                side, no arguments special keyword is defined inside an arrow function.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            #3. Difference Between map, foreach,filter and ,find.
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p><strong>.forEach():</strong> is used to execute the same code on every element in an
+                                array
+                                but does not change the array and it returns undefined.</p>
+                            <p><strong>.map():</strong> executes the same code on every element in an array and returns
+                                a new
+                                array with the updated elements.</p>
+                            <p><strong>.filter:</strong>
+                                checks every element in an array to see if it meets a certain criteria and returns a new
+                                array with the elements that return 'truthy' for the criteria.</p>
+                            <p><strong>.find:</strong> The find function returns the first item that matches the
+                                callback
+                                function, or undefined if there is nothing that matches.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            #4. How can you use template literals?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>Template literals are string literals allowing embedded expressions using backtick
+                                characters (`). You can use multi-line strings and string interpolation features with
+                                them. Formerly known as template strings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <!-- ----bootstrap js link--------- -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
