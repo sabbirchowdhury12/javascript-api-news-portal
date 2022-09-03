@@ -24,6 +24,7 @@ const displayCategories = (catagories) => {
     })
 }
 
+
 const loadNews = async (category_id) => {
 
     // const url = `https://openapi.programming-hero.com/api/news/category/01`
@@ -35,8 +36,16 @@ const loadNews = async (category_id) => {
 }
 
 const displayNews = (newses) => {
+
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
+    // console.log(newses.length)
+    const notFound = document.getElementById('no-news');
+    if (newses.length <= 0) {
+        notFound.classList.remove('d-none');
+    } else {
+        notFound.classList.add('d-none');
+    }
     newses.forEach(news => {
         // console.log(news)
 
@@ -70,7 +79,7 @@ const displayNews = (newses) => {
 
 const getCategoryId = (id) => {
     loadNews(id);
-    console.log(id)
+    // console.log(id)
 }
 
 loadCategories();
