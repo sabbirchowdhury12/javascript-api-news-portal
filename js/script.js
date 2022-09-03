@@ -1,5 +1,5 @@
 
-
+// load category------------
 const loadCategories = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`
     const res = await fetch(url);
@@ -7,6 +7,7 @@ const loadCategories = async () => {
     displayCategories(data.data.news_category);
 }
 
+//show category section----------
 const displayCategories = (catagories) => {
     // console.log(catagories)
 
@@ -24,7 +25,7 @@ const displayCategories = (catagories) => {
     })
 }
 
-
+//load news--------
 const loadNews = async (category_id) => {
 
     // const url = `https://openapi.programming-hero.com/api/news/category/01`
@@ -35,6 +36,7 @@ const loadNews = async (category_id) => {
 
 }
 
+//show news section---------
 const displayNews = (newses) => {
 
     const newsContainer = document.getElementById('news-container');
@@ -46,18 +48,20 @@ const displayNews = (newses) => {
     } else {
         notFound.classList.add('d-none');
     }
+
     newses.forEach(news => {
-        // console.log(news)
+        console.log(news)
 
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
 
+        const dots = "..."
         newsDiv.innerHTML = `
         <div class="card">
             <img src="${news.thumbnail_url}" class="card-img-top" >
             <div class="card-body">
                 <h5 class="card-title">${news.title}</h5>
-                <p class="card-text">${news.details}</p>
+                <p class="card-text">${news.details.slice(0, 200)}${dots}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center">
                         <img src="${news.author.img}" style="width:50px; height:50px" class="rounded-circle me-3">
@@ -71,17 +75,30 @@ const displayNews = (newses) => {
             </div>
         </div>
         `
-        newsContainer.appendChild(newsDiv)
-
+        newsContainer.appendChild(newsDiv);
     });
+
+    //spinner stop-----------
+    spinnerLoad(false)
 }
 
+//spinner funcetion-------------
+const spinnerLoad = (isLoad) => {
+    const spinner = document.getElementById('sppiner');
+    if (isLoad == true) {
+        spinner.classList.remove('d-none');
+    } else {
+        spinner.classList.add('d-none')
+    }
+}
 
 const getCategoryId = (id) => {
+    //spinner start------
+    spinnerLoad(true)
     loadNews(id);
     // console.log(id)
 }
 
 loadCategories();
 
-// loadNews(' ');
+// loadNews('01');
