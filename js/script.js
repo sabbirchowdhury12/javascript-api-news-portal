@@ -65,11 +65,11 @@ const displayNews = (newses) => {
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center">
                         <img src="${news.author.img}" style="width:50px; height:50px" class="rounded-circle me-3">
-                        <p>${news.author.name}</p>
+                        <p>${news.author.name ? news.author.name : 'author'}</p>
                     </div>
                     <div class="d-flex">
                     <i class="bi bi-eye"></i>
-                        <p class="ms-3">${news.total_view}</p>
+                        <p class="ms-3">${news.total_view ? news.total_view : '0'}</p>
                     </div>
                 </div>
             </div>
@@ -102,8 +102,7 @@ const getCategoryId = (id) => {
 
 
 const loadNewsDeatails = async (id) => {
-    // const url = `https://openapi.programming-hero.com/api/news/${id}`;
-    const url = `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`;
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
     const res = await fetch(url);
     const data = await res.json();
     displayNewsDetails(data.data);
@@ -111,7 +110,7 @@ const loadNewsDeatails = async (id) => {
 
 const displayNewsDetails = (details) => {
 
-    // console.log(details)
+    console.log(details)
 
     details.forEach(detail => {
         console.log(detail)
@@ -120,10 +119,10 @@ const displayNewsDetails = (details) => {
 
         const modalBody = document.getElementById('modal-body');
         modalBody.innerHTML = `
-        <p>Author Name: ${detail.author.name}</p>
+        <p>Author Name: ${detail.author.name ? detail.author.name : "name not found"}</p>
         <p>Publish Date: ${detail.author.published_date}</p>
-        <p>Total View: ${detail.total_view}</p>
-        <p>Publish Date: ${detail.author.published_date}</p>
+        <p>Total View: ${detail.total_view ? detail.total_view : "Not found"}</p>
+        <p>Rating: ${detail.rating.number ? detail.rating.number : "0"}</p>
         
         `
     })
