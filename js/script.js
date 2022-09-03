@@ -44,7 +44,7 @@ const displayNews = (newses) => {
 
     const inputField = document.getElementById('input-field');
     inputField.value = `${newses.length} items found for this category`
-    console.log(newses)
+    // console.log(newses)
     const notFound = document.getElementById('no-news');
     if (newses.length <= 0) {
         notFound.classList.remove('d-none');
@@ -52,8 +52,17 @@ const displayNews = (newses) => {
         notFound.classList.add('d-none');
     }
 
+    //shorting-------
+    newses.sort(function (a, b) {
+
+        return b.total_view - a.total_view
+    });
+    console.log(newses)
+
+
+
+
     newses.forEach(news => {
-        // console.log(news)
 
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
