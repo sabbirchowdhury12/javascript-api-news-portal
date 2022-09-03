@@ -2,37 +2,44 @@
 // load category------------
 const loadCategories = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`
-    const res = await fetch(url);
-    const data = await res.json();
-    displayCategories(data.data.news_category);
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayCategories(data.data.news_category);
+    }
+    catch (error) {
+        console.log(error)
+    }
+
 }
 
-//show category section----------
+//display category section----------
 const displayCategories = (catagories) => {
-    // console.log(catagories)
 
     catagories.forEach(category => {
-        // console.log(category)
-
         const categoryList = document.getElementById('unorder-list');
         const li = document.createElement('li');
 
         li.innerHTML = `
-        <a onclick="getCategoryId('${category.category_id}')" class="nav-link active" aria-current="page" href="#">${category.category_name}</a>
+        <a onclick="getCategoryId('${category.category_id}')" class="nav-link" aria-current="page" href="#">${category.category_name}</a>
         `
         categoryList.appendChild(li)
 
     })
 }
 
-//load news--------
+//load news section--------
 const loadNews = async (category_id) => {
 
-    // const url = `https://openapi.programming-hero.com/api/news/category/01`
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
-    const res = await fetch(url);
-    const data = await res.json();
-    displayNews(data.data);
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayNews(data.data);
+    } catch (error) {
+        console.log(error)
+    }
 
 }
 
@@ -42,9 +49,11 @@ const displayNews = (newses) => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
 
+    //count of categoty items---
     const inputField = document.getElementById('input-field');
     inputField.value = `${newses.length} items found for this category`
-    // console.log(newses)
+
+    //show error msg ---
     const notFound = document.getElementById('no-news');
     if (newses.length <= 0) {
         notFound.classList.remove('d-none');
@@ -52,15 +61,10 @@ const displayNews = (newses) => {
         notFound.classList.add('d-none');
     }
 
-    //shorting-------
+    //shorting by total view-------
     newses.sort(function (a, b) {
-
         return b.total_view - a.total_view
     });
-    console.log(newses)
-
-
-
 
     newses.forEach(news => {
 
@@ -105,6 +109,7 @@ const spinnerLoad = (isLoad) => {
     }
 }
 
+//get categoryId------
 const getCategoryId = (id) => {
     //spinner start------
     spinnerLoad(true)
@@ -115,9 +120,15 @@ const getCategoryId = (id) => {
 
 const loadNewsDeatails = async (id) => {
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayNewsDetails(data.data);
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayNewsDetails(data.data);
+    }
+    catch (err) {
+        console.log(err)
+    }
 }
 
 const displayNewsDetails = (details) => {
@@ -131,18 +142,16 @@ const displayNewsDetails = (details) => {
 
         const modalBody = document.getElementById('modal-body');
         modalBody.innerHTML = `
-        <p>Author Name: ${detail.author.name ? detail.author.name : "name not found"}</p>
+        <img class="img-fluid" src=${detail.author.img}>
+        <p>Author Name: ${detail.author.name ? detail.author.name : "no data available"}</p>
         <p>Publish Date: ${detail.author.published_date}</p>
-        <p>Total View: ${detail.total_view ? detail.total_view : "Not found"}</p>
+        <p>Total View: ${detail.total_view ? detail.total_view : "no data available"}</p>
         <p>Rating: ${detail.rating.number ? detail.rating.number : "0"}</p>
         `
     })
 
 
 }
-
-
-
 
 loadCategories();
 
