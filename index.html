@@ -19,9 +19,9 @@
 <body>
 
     <!-- -----------------nav-bar section start------------- -->
-    <nav class="navbar navbar-expand-md navbar-light border border-bottom">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="#">Latest news</a>
+    <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container border-bottom pb-3">
+            <a class="navbar-brand fw-bold text-primary fs-4" href="#">Latest news</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -62,10 +62,23 @@
             </nav>
         </section>
 
-        <div class="container my-3">
-            <input id="input-field" type="text" class=" d-block w-100 border  rounded-3 p-2">
-        </div>
+        <!-- count category items section-----  -->
+        <section class="container">
+            <div class=" my-3">
+                <input id="input-field" type="text" class=" d-block w-100 border  rounded-3 p-2">
+            </div>
 
+            <div class="d-block  d-sm-flex justify-content-between">
+                <div>
+                    <span class="fw-bold">Sort By View: </span><button class="btn btn-outline-secondary dropdown-toggle"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">Default</button>
+                </div>
+                <div>
+                    <button class="text-white btn btn-primary my-1">Today's Pick</button>
+                    <button class="btn btn-outline-primary">Trending</button>
+                </div>
+            </div>
+        </section>
         <!------------ display news section---------- -->
         <section class="container">
             <div id="news-container" class="row row-cols-1 row-cols-md-2 g-4">
