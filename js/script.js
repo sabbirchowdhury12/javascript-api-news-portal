@@ -155,4 +155,4 @@ const displayNewsDetails = (details) => {
 
 loadCategories();
 
-loadNews('01');
+// loadNews('01');
