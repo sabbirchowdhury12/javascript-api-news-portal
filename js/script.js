@@ -55,10 +55,14 @@ const displayNews = (newses) => {
 
     //show error msg ---
     const notFound = document.getElementById('no-news');
+    //footer --optional
+    const footerSection = document.getElementById('footer-section');
     if (newses.length <= 0) {
         notFound.classList.remove('d-none');
+        footerSection.classList.add('d-none');
     } else {
         notFound.classList.add('d-none');
+        footerSection.classList.remove('d-none');
     }
 
     //shorting by total view-------
