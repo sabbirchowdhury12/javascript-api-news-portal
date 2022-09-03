@@ -16,12 +16,12 @@
 
 </head>
 
-<body>
+<body class="bg-light">
 
     <!-- -----------------nav-bar section start------------- -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container border-bottom pb-3">
-            <a class="navbar-brand fw-bold text-primary fs-4" href="#">Latest news</a>
+            <a class="navbar-brand fw-bold text-primary fs-3" href="#">Latest News</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item me-3">
-                        <a class="nav-link bg-primary rounded-3 px-2 text-white d-inline-block"" aria-current=" page"
+                        <a class="nav-link bg-primary rounded-3 px-2 text-white d-inline-block" aria-current=" page"
                             href="#">News</a>
                     </li>
                     <li id="blog-nav" class="nav-item">
@@ -42,10 +42,11 @@
     </nav>
 
     <!-- -----------------nav-bar section end------------- -->
+    <!-- main section start----------  -->
     <main>
         <!-- ------category section--------- -->
         <section>
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-md navbar-light">
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContents" aria-controls="navbarSupportedContents"
@@ -65,10 +66,10 @@
         <!-- count category items section-----  -->
         <section class="container">
             <div class=" my-3">
-                <input id="input-field" type="text" class=" d-block w-100 border  rounded-3 p-2">
+                <input id="input-field" type="text" class=" d-block w-100 border  rounded-3 p-2" readonly>
             </div>
 
-            <div class="d-block  d-sm-flex justify-content-between">
+            <div class="d-block d-sm-flex justify-content-between my-5">
                 <div>
                     <span class="fw-bold">Sort By View: </span><button class="btn btn-outline-secondary dropdown-toggle"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false">Default</button>
@@ -79,6 +80,7 @@
                 </div>
             </div>
         </section>
+
         <!------------ display news section---------- -->
         <section class="container">
             <div id="news-container" class="row row-cols-1 row-cols-md-2 g-4">
@@ -91,7 +93,7 @@
             <h2>No news found...</h2>
         </div>
 
-        <!-- ------spiner section ----------  -->
+        <!-- ------spinner section ----------  -->
         <section>
             <div id="sppiner" class="d-none">
                 <div style="height: 200px;" class="d-flex justify-content-center align-items-center">
@@ -123,9 +125,9 @@
 
     <footer>
         <div id="footer-section" class="d-none py-5 mt-3 text-white text-center bg-primary">
-            <h3>To Update Latest News...Follow Us</h3>
+            <h3>To Update Latest News...Follow Us..!!</h3>
             <p class="m-0">www.latestnews.com</p>
-            <p class="p-0">latestnews.gmail.com</p>
+            <p class="p-0">latestnews@gmail.com</p>
         </div>
     </footer>
 

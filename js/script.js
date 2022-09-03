@@ -13,7 +13,7 @@ const loadCategories = async () => {
 
 }
 
-//display category section----------
+//create category section----------
 const displayCategories = (catagories) => {
 
     catagories.forEach(category => {
@@ -43,7 +43,7 @@ const loadNews = async (category_id) => {
 
 }
 
-//show news section---------
+//display news section---------
 const displayNews = (newses) => {
 
     const newsContainer = document.getElementById('news-container');
@@ -115,13 +115,13 @@ const spinnerLoad = (isLoad) => {
 
 //get categoryId------
 const getCategoryId = (id) => {
+
     //spinner start------
     spinnerLoad(true)
     loadNews(id);
-    // console.log(id)
 }
 
-
+//load Deatails modal
 const loadNewsDeatails = async (id) => {
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
 
@@ -135,6 +135,7 @@ const loadNewsDeatails = async (id) => {
     }
 }
 
+//display news deatails Modal--------
 const displayNewsDetails = (details) => {
 
     console.log(details)
