@@ -41,7 +41,10 @@ const displayNews = (newses) => {
 
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
-    // console.log(newses.length)
+
+    const inputField = document.getElementById('input-field');
+    inputField.value = `${newses.length} items found for this category`
+    console.log(newses)
     const notFound = document.getElementById('no-news');
     if (newses.length <= 0) {
         notFound.classList.remove('d-none');
@@ -123,7 +126,6 @@ const displayNewsDetails = (details) => {
         <p>Publish Date: ${detail.author.published_date}</p>
         <p>Total View: ${detail.total_view ? detail.total_view : "Not found"}</p>
         <p>Rating: ${detail.rating.number ? detail.rating.number : "0"}</p>
-        
         `
     })
 
