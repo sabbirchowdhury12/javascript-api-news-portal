@@ -12,7 +12,7 @@ const displayCategories = (catagories) => {
     // console.log(catagories)
 
     catagories.forEach(category => {
-        console.log(category)
+        // console.log(category)
 
         const categoryList = document.getElementById('unorder-list');
         const li = document.createElement('li');
@@ -50,7 +50,7 @@ const displayNews = (newses) => {
     }
 
     newses.forEach(news => {
-        console.log(news)
+        // console.log(news)
 
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
@@ -69,10 +69,11 @@ const displayNews = (newses) => {
                     </div>
                     <div class="d-flex">
                     <i class="bi bi-eye"></i>
-                        <p class="ms-3">1.5m</p>
+                        <p class="ms-3">${news.total_view}</p>
                     </div>
                 </div>
             </div>
+            <button onclick="loadNewsDeatails('${news._id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Details</button>
         </div>
         `
         newsContainer.appendChild(newsDiv);
@@ -99,6 +100,40 @@ const getCategoryId = (id) => {
     // console.log(id)
 }
 
+
+const loadNewsDeatails = async (id) => {
+    // const url = `https://openapi.programming-hero.com/api/news/${id}`;
+    const url = `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayNewsDetails(data.data);
+}
+
+const displayNewsDetails = (details) => {
+
+    // console.log(details)
+
+    details.forEach(detail => {
+        console.log(detail)
+        const modalTitile = document.getElementById('exampleModalLabel');
+        modalTitile.innerText = detail.title;
+
+        const modalBody = document.getElementById('modal-body');
+        modalBody.innerHTML = `
+        <p>Author Name: ${detail.author.name}</p>
+        <p>Publish Date: ${detail.author.published_date}</p>
+        <p>Total View: ${detail.total_view}</p>
+        <p>Publish Date: ${detail.author.published_date}</p>
+        
+        `
+    })
+
+
+}
+
+
+
+
 loadCategories();
 
-// loadNews('01');
+loadNews('01');
